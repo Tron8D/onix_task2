@@ -41,7 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   //creating game's mesh
-  var _mesh = List.generate(3, (index) => List.generate(3, (index) => 0));
+  var _mesh = List.generate(
+      3,
+      (index) => List.generate(
+            3,
+            (index) => 0,
+            growable: false,
+          ),
+      growable: false);
 
   @override
   Widget build(BuildContext context) {
@@ -73,14 +80,12 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Flexible(
             flex: 3,
-            child: Container(
-              child: GridView.count(
-                padding: EdgeInsets.all(5),
-                crossAxisCount: 3,
-                crossAxisSpacing: 5,
-                mainAxisSpacing: 5,
-                children: cardList,
-              ),
+            child: GridView.count(
+              padding: EdgeInsets.all(5),
+              crossAxisCount: 3,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+              children: cardList,
             ),
           ),
           // Flexible(
@@ -221,16 +226,18 @@ class _MyHomePageState extends State<MyHomePage> {
 class GameCard extends StatefulWidget {
   final int row;
   final int col;
-  var mesh;
+  final mesh;
   final dynamic Function(int x, int y) onPressed;
 
-  GameCard({
+  const GameCard({
     Key? key,
     required this.row,
     required this.col,
     required this.mesh,
     required this.onPressed,
   });
+
+  @override
   _GameCardState createState() => _GameCardState();
 }
 
@@ -282,3 +289,5 @@ class _GameCardState extends State<GameCard> {
     );
   }
 }
+
+class GameLogic {}
