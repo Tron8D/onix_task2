@@ -1,3 +1,5 @@
+//Game Tic-Tac-Toe in DartPad
+
 import 'dart:core';
 
 import 'package:flutter/material.dart';
@@ -69,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final List<GameCard> cardList = getCardList();
 
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+//      backgroundColor: Colors.white70,
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
@@ -78,12 +80,27 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Flexible(
             flex: 3,
-            child: GridView.count(
-              padding: EdgeInsets.all(5),
-              crossAxisCount: 3,
-              crossAxisSpacing: 5,
-              mainAxisSpacing: 5,
-              children: cardList,
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Container(),
+                ),
+                Flexible(
+                  flex: 3,
+                  child: GridView.count(
+                    padding: EdgeInsets.all(5),
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                    children: cardList,
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Container(),
+                ),
+              ],
             ),
           ),
           SizedBox(
@@ -234,16 +251,13 @@ class GameCard extends StatefulWidget {
 class _GameCardState extends State<GameCard> {
   final Icon defaultCard = Icon(
     Icons.brightness_1,
-    size: 0,
-    color: Colors.white54,
+    color: Colors.blue,
   );
   final Icon crossIcon = Icon(
     Icons.clear_outlined,
-    size: 100,
   );
   final Icon zeroIcon = Icon(
     Icons.circle_outlined,
-    size: 100,
   );
 
   Icon getIcon() {
@@ -265,7 +279,7 @@ class _GameCardState extends State<GameCard> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white54,
+          color: Colors.blue,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: Colors.black,
