@@ -2,9 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -41,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   //creating game's mesh
-  var _mesh = List.generate(
+  List _mesh = List.generate(
       3,
       (index) => List.generate(
             3,
@@ -88,14 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
               children: cardList,
             ),
           ),
-          // Flexible(
-          //   flex: 1,
-          //   child: Center(
-          //     child: Text(
-          //       '$_mesh counter: $_counter',
-          //     ),
-          //   ),
-          // ),
           SizedBox(
             height: 30,
           ),
@@ -226,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
 class GameCard extends StatefulWidget {
   final int row;
   final int col;
-  final mesh;
+  final List mesh;
   final dynamic Function(int x, int y) onPressed;
 
   const GameCard({
@@ -289,5 +279,3 @@ class _GameCardState extends State<GameCard> {
     );
   }
 }
-
-class GameLogic {}
